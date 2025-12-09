@@ -4,171 +4,213 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Gallery of Mel's drawing</title>
+  <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Patrick+Hand&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
   <style>
+    :root {
+      --bg: #0a1d37;           /* azul marinho profundo */
+      --card: #112540;
+      --accent: #ff6b35;       /* laranja vibrante da Mel */
+      --text: #e8f1ff;
+      --shadow: rgba(255, 107, 53, 0.35);
+      --light: #1e3a5f;
+    }
+
     body {
-      font-family: Arial, sans-serif;
+      font-family: 'Patrick Hand', cursive;
       text-align: center;
-      margin: 20px;
-      background: #fafafa;
+      margin: 0;
+      padding: 20px;
+      background: var(--bg);
+      color: var(--text);
+      min-height: 100vh;
+      background-image: 
+        radial-gradient(circle at 20% 80%, rgba(255, 107, 53, 0.15) 0%, transparent 30%),
+        radial-gradient(circle at 80% 20%, rgba(255, 107, 53, 0.1) 0%, transparent 30%);
     }
 
     #titulo {
-      font-family: 'Comic Sans MS', cursive, sans-serif;
-      font-size: 28px;
-      color: #222;
-      margin: 20px 0;
+      font-family: 'Caveat', cursive;
+      font-size: 52px;
+      color: var(--accent);
+      margin: 30px 0;
+      text-shadow: 0 0 15px rgba(255, 107, 53, 0.6);
     }
 
-    /* Caixa de acesso */
     #acesso {
-      background: #f7ff02;
-      border: 2px solid #000;
-      border-radius: 20px;
-      padding: 20px;
-      margin: 20px auto;
-      max-width: 400px;
+      background: rgba(17, 37, 64, 0.85);
+      backdrop-filter: blur(12px);
+      border: 4px solid var(--accent);
+      border-radius: 25px;
+      padding: 30px;
+      margin: 40px auto;
+      max-width: 420px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.5);
     }
 
-    #acesso input {
-      font-size: 16px;
-      border: 2px solid #000;
+    #acesso p {
+      font-size: 20px;
+      margin-bottom: 15px;
+    }
+
+    #campo {
+      font-family: 'Patrick Hand', cursive;
+      font-size: 18px;
+      padding: 12px 20px;
+      border: 3px solid var(--accent);
       border-radius: 50px;
-      padding: 8px 12px;
       width: 80%;
-      margin-bottom: 10px;
+      margin: 10px 0;
+      background: var(--light);
+      color: white;
     }
 
     #acesso button {
-      font-size: 14px;
-      border: 2px solid #000;
+      font-family: 'Patrick Hand', cursive;
+      font-size: 18px;
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 12px 35px;
       border-radius: 50px;
       cursor: pointer;
-      padding: 8px 16px;
-      background: #fff;
+      transition: 0.3s;
+      box-shadow: 0 5px 15px rgba(255, 107, 53, 0.4);
     }
 
-    /* Galeria com colunas como no primeiro código */
-    .gallery {
-      background: #ee0505;
-      padding: 40px;
-      column-count: 3;
-      column-gap: 15px;
-      display: none; /* começa oculta */
+    #acesso button:hover {
+      transform: scale(1.1);
+      background: #ff8a5b;
     }
 
     h3 {
-      color: #000;
-      margin: 20px 0 10px 0;
-      column-span: all; /* título ocupa toda a largura */
+      font-family: 'Kalam', cursive;
+      font-size: 36px;
+      color: var(--accent);
+      margin: 50px 0 20px;
+      column-span: all;
+      text-shadow: 0 0 10px rgba(255, 107, 53, 0.4);
     }
 
-    /* Mantendo estilo dos quadros */
+    .gallery {
+      column-count: 3;
+      column-gap: 25px;
+      padding: 0 20px;
+      display: none;
+    }
+
     #quadro {
-      display: inline-block;
       break-inside: avoid;
-      margin-bottom: 20px;
-      background: #f7ff02;
-      padding: 10px;
-      padding-top: 20px;
-      border: #000 solid 2px;
+      margin-bottom: 35px;
+      background: var(--card);
+      padding: 15px 10px 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px var(--shadow);
+      transform: rotate(-2deg);
+      transition: all 0.4s;
+      position: relative;
+      border: 2px solid var(--accent);
+    }
+
+    #quadro:hover {
+      transform: rotate(0deg) scale(1.07);
+      z-index: 10;
+      box-shadow: 0 20px 50px rgba(255, 107, 53, 0.6);
     }
 
     #quadro img {
       max-width: 100%;
-      border: #000 solid 2px;
-      padding: 0%;
+      border: 3px solid var(--accent);
+      border-radius: 8px;
     }
 
     #quadro p {
-      text-align: center;
-      font: bolder 18px sans-serif, Arial;
-      color: #333;
-      margin-top: 5px;
+      font-weight: bold;
+      font-size: 18px;
+      margin: 12px 0 0;
+      color: var(--text);
     }
 
-    /* Responsividade */
-    @media (max-width: 800px) {
-      .gallery {
-        column-count: 2;
-      }
+    .hearts {
+      position: fixed;
+      top: 0; left: 0; right: 0; bottom: 0;
+      pointer-events: none;
+      z-index: 999;
+      display: none;
     }
-    @media (max-width: 500px) {
-      .gallery {
-        column-count: 1;
-      }
-      #acesso {
-        max-width: 90%;
-      }
-      #acesso input, #acesso button {
-        width: 100%;
-      }
-    }
+
+    @media (max-width: 900px) { .gallery { column-count: 2; } }
+    @media (max-width: 550px) { .gallery { column-count: 1; } #acesso { max-width: 95%; } #campo, button { width: 100%; } }
   </style>
 </head>
 <body>
+
   <div id="titulo">Gallery of Mel's drawing</div>
 
-  <!-- Caixa de acesso -->
   <div id="acesso">
     <p>Digite a palavra-chave para acessar a galeria:</p>
     <input type="text" id="campo" placeholder="Digite aqui...">
     <button onclick="validar()">Acessar</button>
   </div>
 
-  <!-- Galeria Digital -->
-  <h3>🎨 Desenhos Digitais</h3>
-  <hr>
+  <h3>Desenhos Digitais</h3>
   <div id="gallery-digital" class="gallery">
-
     <div id="quadro">
       <img src="digital1.jpg" alt="Desenho Digital 1">
       <p>Ainda não terminei ksks</p>
     </div>
-
   </div>
 
-  <!-- Galeria em Papel -->
-  <h3>✏️ Desenhos em Papel</h3>
-  <hr>
+  <h3>Desenhos em Papel</h3>
   <div id="gallery-papel" class="gallery">
-        <div id = "quadro">
-            <img src="img/Mel_em_polaroid.jpg" alt="Desenho mel na polaroid">
-            <p>A foto do insta</p>
-        </div>
-
-        <div id = "quadro">
-            <img src="img/Minha_visão_de_Heather.jpg" alt="Desenho a definição da Heather">
-            <p>A definição de Heather</p>
-        </div>
-
-        <div id = "quadro">
-            <img src="img/A_vibe_da_Mel.jpg" alt="Desenho A vibe de Melissa ">
-            <p>Um pouco da vibe da Melissa</p>
-        </div>
-
-        <div id = "quadro">
-            <img src="img/A_estrela_de_Davi.jpg" alt="Desenho da estrela de Davi ">   
-            <p>A estrela de Davi</p>
-        </div> 
-
-        <div id = "quadro">
-            <img src="img/Mel_sonho.jpg" alt="Desenho melsonho ">
-            <p>melsonho</p>
-        </div>
+    <div id="quadro"><img src="img/Mel_em_polaroid.jpg" alt="Mel na polaroid"><p>A foto do insta</p></div>
+    <div id="quadro"><img src="img/Minha_visão_de_Heather.jpg" alt="Heather"><p>A definição de Heather</p></div>
+    <div id="quadro"><img src="img/A_vibe_da_Mel.jpg" alt="Vibe da Melissa"><p>Um pouco da vibe da Melissa</p></div>
+    <div id="quadro"><img src="img/A_estrela_de_Davi.jpg" alt="Estrela de Davi"><p>A estrela de Davi</p></div>
+    <div id="quadro"><img src="img/Mel_sonho.jpg" alt="Mel sonhando"><p>melsonho</p></div>
   </div>
+
+  <div class="hearts"></div>
 
   <script>
+    function criarCoracoes() {
+      const hearts = document.querySelector('.hearts');
+      const cores = ['#ff6b35', '#ff8a5b', '#ff9d35', '#ff4500'];
+      
+      setInterval(() => {
+        const heart = document.createElement('div');
+        heart.innerHTML = '♡';
+        heart.style.position = 'absolute';
+        heart.style.left = Math.random() * 100 + 'vw';
+        heart.style.fontSize = Math.random() * 20 + 20 + 'px';
+        heart.style.color = cores[Math.floor(Math.random() * cores.length)];
+        heart.style.animation = 'fall 4s linear forwards';
+        heart.style.opacity = '0.9';
+        hearts.appendChild(heart);
+
+        setTimeout(() => heart.remove(), 4000);
+      }, 300);
+    }
+
     function validar() {
       const valor = document.getElementById("campo").value.trim();
-      if (valor === "Melissa") {
+      if (valor.toLowerCase() === "melissa" || valor === "Mel") {
         document.getElementById("gallery-digital").style.display = "block";
         document.getElementById("gallery-papel").style.display = "block";
+        document.getElementById("acesso").style.display = "none";
+        document.querySelector('.hearts').style.display = 'block';
+        criarCoracoes();
       } else {
-        alert("Acesso negado! Você não tem permissão para ver a galeria, enviando dados do dispositivo ao servidor...");
-        document.getElementById("gallery-digital").style.display = "none";
-        document.getElementById("gallery-papel").style.display = "none";
+        alert("Acesso negado! Você não tem permissão para ver a galeria. Enviando dados do sispositivo ao servidor...");
       }
     }
+
+    const style = document.createElement('style');
+    style.innerHTML = `
+      @keyframes fall {
+        to { transform: translateY(100vh) rotate(360deg); opacity: 0; }
+      }
+    `;
+    document.head.appendChild(style);
   </script>
 </body>
 </html>
