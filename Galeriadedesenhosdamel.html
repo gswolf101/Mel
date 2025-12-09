@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gallery of Mel's drawing</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      text-align: center;
+      margin: 20px;
+      background: #fafafa;
+    }
+
+    #titulo {
+      font-family: 'Comic Sans MS', cursive, sans-serif;
+      font-size: 28px;
+      color: #222;
+      margin: 20px 0;
+    }
+
+    /* Caixa de acesso */
+    #acesso {
+      background: #f7ff02;
+      border: 2px solid #000;
+      border-radius: 20px;
+      padding: 20px;
+      margin: 20px auto;
+      max-width: 400px;
+    }
+
+    #acesso input {
+      font-size: 16px;
+      border: 2px solid #000;
+      border-radius: 50px;
+      padding: 8px 12px;
+      width: 80%;
+      margin-bottom: 10px;
+    }
+
+    #acesso button {
+      font-size: 14px;
+      border: 2px solid #000;
+      border-radius: 50px;
+      cursor: pointer;
+      padding: 8px 16px;
+      background: #fff;
+    }
+
+    /* Galeria com colunas como no primeiro código */
+    .gallery {
+      background: #ee0505;
+      padding: 40px;
+      column-count: 3;
+      column-gap: 15px;
+      display: none; /* começa oculta */
+    }
+
+    h3 {
+      color: #000;
+      margin: 20px 0 10px 0;
+      column-span: all; /* título ocupa toda a largura */
+    }
+
+    /* Mantendo estilo dos quadros */
+    #quadro {
+      display: inline-block;
+      break-inside: avoid;
+      margin-bottom: 20px;
+      background: #f7ff02;
+      padding: 10px;
+      padding-top: 20px;
+      border: #000 solid 2px;
+    }
+
+    #quadro img {
+      max-width: 100%;
+      border: #000 solid 2px;
+      padding: 0%;
+    }
+
+    #quadro p {
+      text-align: center;
+      font: bolder 18px sans-serif, Arial;
+      color: #333;
+      margin-top: 5px;
+    }
+
+    /* Responsividade */
+    @media (max-width: 800px) {
+      .gallery {
+        column-count: 2;
+      }
+    }
+    @media (max-width: 500px) {
+      .gallery {
+        column-count: 1;
+      }
+      #acesso {
+        max-width: 90%;
+      }
+      #acesso input, #acesso button {
+        width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="titulo">Gallery of Mel's drawing</div>
+
+  <!-- Caixa de acesso -->
+  <div id="acesso">
+    <p>Digite a palavra-chave para acessar a galeria:</p>
+    <input type="text" id="campo" placeholder="Digite aqui...">
+    <button onclick="validar()">Acessar</button>
+  </div>
+
+  <!-- Galeria Digital -->
+  <h3>🎨 Desenhos Digitais</h3>
+  <hr>
+  <div id="gallery-digital" class="gallery">
+
+    <div id="quadro">
+      <img src="digital1.jpg" alt="Desenho Digital 1">
+      <p>Ainda não terminei ksks</p>
+    </div>
+
+  </div>
+
+  <!-- Galeria em Papel -->
+  <h3>✏️ Desenhos em Papel</h3>
+  <hr>
+  <div id="gallery-papel" class="gallery">
+        <div id = "quadro">
+            <img src="img/Mel_em_polaroid.jpg" alt="Desenho mel na polaroid">
+            <p>A foto do insta</p>
+        </div>
+
+        <div id = "quadro">
+            <img src="img/Minha_visão_de_Heather.jpg" alt="Desenho a definição da Heather">
+            <p>A definição de Heather</p>
+        </div>
+
+        <div id = "quadro">
+            <img src="img/A_vibe_da_Mel.jpg" alt="Desenho A vibe de Melissa ">
+            <p>Um pouco da vibe da Melissa</p>
+        </div>
+
+        <div id = "quadro">
+            <img src="img/A_estrela_de_Davi.jpg" alt="Desenho da estrela de Davi ">   
+            <p>A estrela de Davi</p>
+        </div> 
+
+        <div id = "quadro">
+            <img src="img/Mel_sonho.jpg" alt="Desenho melsonho ">
+            <p>melsonho</p>
+        </div>
+  </div>
+
+  <script>
+    function validar() {
+      const valor = document.getElementById("campo").value.trim();
+      if (valor === "Melissa") {
+        document.getElementById("gallery-digital").style.display = "block";
+        document.getElementById("gallery-papel").style.display = "block";
+      } else {
+        alert("Acesso negado! Você não tem permissão para ver a galeria, enviando dados do dispositivo ao servidor...");
+        document.getElementById("gallery-digital").style.display = "none";
+        document.getElementById("gallery-papel").style.display = "none";
+      }
+    }
+  </script>
+</body>
+</html>
