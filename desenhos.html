@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Gallery of Mel's drawing</title>
+  <title>Gallery of Mi's drawing</title>
   <link href="https://fonts.googleapis.com/css2?family=Caveat:wght@600;700&family=Patrick+Hand&family=Kalam:wght@400;700&display=swap" rel="stylesheet">
   <style>
     :root {
@@ -144,7 +144,7 @@
 </head>
 <body>
 
-  <div id="titulo">Gallery of Mel's drawing</div>
+  <div id="titulo">Gallery of Mi's drawing</div>
 
   <div id="acesso">
     <p>Digite a palavra-chave para acessar a galeria:</p>
@@ -155,18 +155,15 @@
   <h3>Desenhos Digitais</h3>
   <div id="gallery-digital" class="gallery">
     <div id="quadro">
-      <img src="digital1.jpg" alt="Desenho Digital 1">
+      <img src="imagem" alt="Desenho Digital 1">
       <p>Ainda não terminei ksks</p>
     </div>
   </div>
 
   <h3>Desenhos em Papel</h3>
   <div id="gallery-papel" class="gallery">
-    <div id="quadro"><img src="img/Mel_em_polaroid.jpg" alt="Mel na polaroid"><p>A foto do insta</p></div>
-    <div id="quadro"><img src="img/Minha_visão_de_Heather.jpg" alt="Heather"><p>A definição de Heather</p></div>
-    <div id="quadro"><img src="img/A_vibe_da_Mel.jpg" alt="Vibe da Melissa"><p>Um pouco da vibe da Melissa</p></div>
-    <div id="quadro"><img src="img/A_estrela_de_Davi.jpg" alt="Estrela de Davi"><p>A estrela de Davi</p></div>
-    <div id="quadro"><img src="img/Mel_sonho.jpg" alt="Mel sonhando"><p>melsonho</p></div>
+    <div id="quadro"><img src="#porimagemaqui" alt="texto alt"><p>Desenho/p></div>
+
   </div>
 
   <div class="hearts"></div>
@@ -193,14 +190,14 @@
 
     function validar() {
       const valor = document.getElementById("campo").value.trim();
-      if (valor.toLowerCase() === "melissa" || valor === "Mel") {
+      if (valor.toLowerCase() === "250526" || valor === "Mirelli") {
         document.getElementById("gallery-digital").style.display = "block";
         document.getElementById("gallery-papel").style.display = "block";
         document.getElementById("acesso").style.display = "none";
         document.querySelector('.hearts').style.display = 'block';
         criarCoracoes();
       } else {
-        alert("Acesso negado! Você não tem permissão para ver a galeria. Enviando dados do sispositivo ao servidor...");
+        alert("Acesso negado! Você não tem permissão para ver a galeria. Enviando dados do dispositivo ao servidor...");
       }
     }
 
